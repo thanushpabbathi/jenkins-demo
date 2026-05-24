@@ -1,56 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Indian Snacks</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
         body {
-            font-family: Arial;
-            background-color: #f2f2f2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background: #fdf6ec;
         }
 
-        .login-box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px gray;
-            width: 300px;
+        header {
+            background: linear-gradient(90deg, #ff6b35, #ff914d);
+            color: white;
+            padding: 20px;
             text-align: center;
+            font-size: 32px;
+            font-weight: bold;
         }
 
-        input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
+        .hero {
+            text-align: center;
+            padding: 40px;
+            background: #fff3e6;
         }
 
-        button {
+        .hero h1 {
+            font-size: 42px;
+            color: #333;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
             width: 100%;
-            padding: 10px;
-            background: blue;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            padding: 15px;
+            color: #222;
+        }
+
+        .card p {
+            padding: 0 15px 15px;
+            color: #666;
+        }
+
+        .price {
+            padding: 15px;
+            font-size: 20px;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: block;
+            width: 90%;
+            margin: 15px auto 20px;
+            padding: 12px;
+            background: #ff6b35;
             color: white;
             border: none;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 16px;
         }
 
-        button:hover {
-            background: darkblue;
+        .btn:hover {
+            background: #e85a2c;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
 
-    <div class="login-box">
-        <h2>Login</h2>
+    <header>
+        South Indian Snacks Corner
+    </header>
 
-        <input type="text" placeholder="Enter Username">
-        <input type="password" placeholder="Enter Password">
+    <section class="hero">
+        <h1>Taste the Best South Indian Snacks</h1>
+        <p>Crispy • Hot • Delicious • Authentic</p>
+    </section>
 
-        <button>Login</button>
-    </div>
+    <section class="menu">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=800" alt="Medu Vada">
+            <h3>Medu Vada</h3>
+            <p>Crispy golden vada served with chutney & sambar.</p>
+            <div class="price">₹40</div>
+            <button class="btn">Order Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1630383249896-424e482df921?w=800" alt="Masala Dosa">
+            <h3>Masala Dosa</h3>
+            <p>Thin crispy dosa with spicy potato masala.</p>
+            <div class="price">₹80</div>
+            <button class="btn">Order Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800" alt="Punugulu">
+            <h3>Punugulu</h3>
+            <p>Andhra style crispy snack served with chutney.</p>
+            <div class="price">₹50</div>
+            <button class="btn">Order Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1610192244261-3f33de3f55e3?w=800" alt="Idli">
+            <h3>Idli</h3>
+            <p>Soft steamed idlis with coconut chutney & sambar.</p>
+            <div class="price">₹35</div>
+            <button class="btn">Order Now</button>
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 South Indian Snacks Corner | Fresh & Tasty
+    </footer>
 
 </body>
 </html>
