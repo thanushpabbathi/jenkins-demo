@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>South Indian Snacks</title>
+    <title>SnackKart - South Indian Snacks</title>
     <style>
         * {
             margin: 0;
@@ -13,153 +13,372 @@
         }
 
         body {
-            background: #fdf6ec;
+            background: #eaeded;
         }
 
-        header {
-            background: linear-gradient(90deg, #ff6b35, #ff914d);
+        .navbar {
+            background: #131921;
             color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 32px;
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff9900;
+        }
+
+        .search-box {
+            flex: 1;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .cart-btn {
+            background: #febd69;
+            color: black;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
             font-weight: bold;
         }
 
         .hero {
-            text-align: center;
+            background: linear-gradient(90deg, #fff3cd, #ffe8cc);
             padding: 40px;
-            background: #fff3e6;
+            text-align: center;
         }
 
         .hero h1 {
             font-size: 42px;
-            color: #333;
+            color: #222;
         }
 
         .hero p {
-            font-size: 18px;
             margin-top: 10px;
-            color: #666;
+            font-size: 18px;
+            color: #555;
         }
 
-        .menu {
+        .products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
-            padding: 40px;
+            padding: 30px;
         }
 
         .card {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            overflow: hidden;
-            transition: transform 0.3s;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+            transition: 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
         }
 
         .card img {
             width: 100%;
             height: 220px;
             object-fit: cover;
+            border-radius: 10px;
         }
 
         .card h3 {
-            padding: 15px;
+            margin: 12px 0;
             color: #222;
         }
 
-        .card p {
-            padding: 0 15px 15px;
-            color: #666;
-        }
-
         .price {
-            padding: 15px;
-            font-size: 20px;
-            color: #ff6b35;
+            color: #b12704;
+            font-size: 22px;
             font-weight: bold;
         }
 
-        .btn {
-            display: block;
-            width: 90%;
-            margin: 15px auto 20px;
+        .card button {
+            width: 100%;
             padding: 12px;
-            background: #ff6b35;
+            margin-top: 12px;
+            border: none;
+            border-radius: 20px;
+            background: #ffd814;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .card button:hover {
+            background: #f7ca00;
+        }
+
+        #cartPanel {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 380px;
+            height: 100%;
+            background: white;
+            box-shadow: -3px 0 15px rgba(0,0,0,0.2);
+            padding: 20px;
+            overflow-y: auto;
+            display: none;
+            z-index: 2000;
+        }
+
+        #cartPanel h2 {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .qty button {
+            padding: 5px 10px;
+            margin: 0 3px;
+            cursor: pointer;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 14px;
+            background: #ff9900;
             color: white;
             border: none;
-            border-radius: 8px;
+            margin-top: 20px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
         }
 
-        .btn:hover {
-            background: #e85a2c;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #333;
+        .close-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: #444;
             color: white;
-            margin-top: 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+                @media(max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #cartPanel {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        South Indian Snacks Corner
-    </header>
+    <div class="navbar">
+        <div class="logo">SnackKart</div>
 
-    <section class="hero">
-        <h1>Taste the Best South Indian Snacks</h1>
-        <p>Crispy • Hot • Delicious • Authentic</p>
-    </section>
-
-    <section class="menu">
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=800" alt="Medu Vada">
-            <h3>Medu Vada</h3>
-            <p>Crispy golden vada served with chutney & sambar.</p>
-            <div class="price">₹40</div>
-            <button class="btn">Order Now</button>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search South Indian snacks...">
         </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1630383249896-424e482df921?w=800" alt="Masala Dosa">
-            <h3>Masala Dosa</h3>
-            <p>Thin crispy dosa with spicy potato masala.</p>
-            <div class="price">₹80</div>
-            <button class="btn">Order Now</button>
+        <div class="cart-btn" onclick="toggleCart()">
+            Cart (<span id="cartCount">0</span>)
         </div>
+    </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800" alt="Punugulu">
-            <h3>Punugulu</h3>
-            <p>Andhra style crispy snack served with chutney.</p>
-            <div class="price">₹50</div>
-            <button class="btn">Order Now</button>
-        </div>
+    <div class="hero">
+        <h1>South Indian Snacks Marketplace</h1>
+        <p>Order your favorite snacks instantly</p>
+    </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1610192244261-3f33de3f55e3?w=800" alt="Idli">
-            <h3>Idli</h3>
-            <p>Soft steamed idlis with coconut chutney & sambar.</p>
-            <div class="price">₹35</div>
-            <button class="btn">Order Now</button>
-        </div>
+    <div class="products" id="products"></div>
 
-    </section>
+    <div id="cartPanel">
+        <h2>Your Cart</h2>
 
-    <footer>
-        © 2026 South Indian Snacks Corner | Fresh & Tasty
-    </footer>
+        <div id="cartItems"></div>
+
+        <h3>Total: ₹<span id="totalPrice">0</span></h3>
+
+        <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        <button class="close-btn" onclick="toggleCart()">Close</button>
+    </div>
+
+    <script>
+        const products = [
+            {
+                name: "Masala Dosa",
+                price: 80,
+                image: "https://images.unsplash.com/photo-1630383249896-424e482df921?w=800"
+            },
+            {
+                name: "Medu Vada",
+                price: 50,
+                image: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=800"
+            },
+            {
+                name: "Punugulu",
+                price: 60,
+                image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800"
+            },
+            {
+                name: "Idli",
+                price: 40,
+                image: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=800"
+            },
+            {
+                name: "Mysore Bonda",
+                price: 55,
+                image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800"
+            },
+            {
+                name: "Mirchi Bajji",
+                price: 45,
+                image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800"
+            }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem("snackCart")) || [];
+
+        function renderProducts(productList = products) {
+            const productContainer = document.getElementById("products");
+
+            productContainer.innerHTML = productList.map((product, index) => `
+                <div class="card">
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <div class="price">₹${product.price}</div>
+                    <button onclick="addToCart(${index})">Add to Cart</button>
+                </div>
+            `).join("");
+        }
+                function addToCart(index) {
+            const selectedProduct = products[index];
+
+            const existingItem = cart.find(item => item.name === selectedProduct.name);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    ...selectedProduct,
+                    quantity: 1
+                });
+            }
+
+            saveCart();
+        }
+
+        function saveCart() {
+            localStorage.setItem("snackCart", JSON.stringify(cart));
+            renderCart();
+        }
+
+        function renderCart() {
+            document.getElementById("cartCount").innerText =
+                cart.reduce((sum, item) => sum + item.quantity, 0);
+
+            const cartItemsContainer = document.getElementById("cartItems");
+
+            cartItemsContainer.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        ₹${item.price}
+                    </div>
+
+                    <div class="qty">
+                        <button onclick="decreaseQty(${index})">-</button>
+                        ${item.quantity}
+                        <button onclick="increaseQty(${index})">+</button>
+                        <button onclick="removeItem(${index})">X</button>
+                    </div>
+                </div>
+            `).join("");
+
+            const total = cart.reduce(
+                (sum, item) => sum + (item.price * item.quantity),
+                0
+            );
+
+            document.getElementById("totalPrice").innerText = total;
+        }
+
+        function increaseQty(index) {
+            cart[index].quantity++;
+            saveCart();
+        }
+
+        function decreaseQty(index) {
+            cart[index].quantity--;
+
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+
+            saveCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            saveCart();
+        }
+
+        function toggleCart() {
+            const cartPanel = document.getElementById("cartPanel");
+
+            if (cartPanel.style.display === "block") {
+                cartPanel.style.display = "none";
+            } else {
+                cartPanel.style.display = "block";
+            }
+        }
+                function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            alert("Order placed successfully! Thank you for shopping with SnackKart.");
+
+            cart = [];
+            saveCart();
+            toggleCart();
+        }
+
+        document.getElementById("searchInput").addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+
+            const filteredProducts = products.filter(product =>
+                product.name.toLowerCase().includes(query)
+            );
+
+            renderProducts(filteredProducts);
+        });
+
+        renderProducts();
+        renderCart();
+
+    </script>
 
 </body>
 </html>
